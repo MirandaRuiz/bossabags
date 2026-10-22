@@ -1,7 +1,6 @@
-/**
- * Valores por defecto del sitio. En la Fase 2 estos datos vendrán de la
- * tabla `settings` de Supabase; estos valores quedan como respaldo.
- */
+import type { SiteSettings } from "@/lib/types";
+
+/** Valores de respaldo si no se puede leer la tabla `settings`. */
 export const siteDefaults = {
   businessName: "BOSSA BAGS GT",
   logoUrl: null as string | null,
@@ -11,12 +10,10 @@ export const siteDefaults = {
   deliveryTimeText: "3 a 5 días hábiles",
 } as const;
 
-export type SiteInfo = {
-  businessName: string;
-  logoUrl: string | null;
-  whatsappNumber: string;
-  instagramHandle: string;
-};
+export type SiteInfo = Pick<
+  SiteSettings,
+  "businessName" | "logoUrl" | "whatsappNumber" | "instagramHandle"
+>;
 
 export const mainNav = [
   { href: "/", label: "Inicio" },

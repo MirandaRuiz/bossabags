@@ -9,7 +9,8 @@ import { IconCircle } from "@/components/ui/IconCircle";
 import { InfoCard } from "@/components/ui/InfoCard";
 import { Reveal } from "@/components/ui/Reveal";
 import { GoldDivider, SectionHeading } from "@/components/ui/SectionHeading";
-import type { ProductCardData } from "@/lib/types";
+import { getProducts } from "@/lib/data/catalog";
+import { toCardData } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "Guía de estilo",
@@ -26,19 +27,14 @@ const colors = [
   { name: "--blush", hex: "#E8CBBE", label: "Blush" },
 ];
 
-const sampleProducts: ProductCardData[] = [
-  { slug: "demo-1", brand: "Michael Kors", name: "Jet Set Travel Tote", price: 1250, status: "disponible", isNew: true },
-  { slug: "demo-2", brand: "Kate Spade", name: "Knott Medium Satchel", price: 1490, compareAtPrice: 1690, status: "disponible" },
-  { slug: "demo-3", brand: "Guess", name: "Noelle Crossbody", price: 690, status: "agotado" },
-  { slug: "demo-4", brand: "Steve Madden", name: "Bvital Shoulder Bag", price: 590, status: "proximamente" },
-];
-
 const icons = [ShoppingBag, Camera, Banknote, HeartHandshake, Package, MapPinned];
 
-export default function StylePage() {
+export default async function StylePage() {
+  const products = (await getProducts()).slice(0, 4).map(toCardData);
+
   return (
     <div className="mx-auto max-w-6xl space-y-24 px-4 py-16 sm:px-6">
-      <SectionHeading eyebrow="Fase 1" line1="Guía de" line2="estilo" size="xl" as="h1" />
+      <SectionHeading eyebrow="Sistema de marca" line1="Guía de" line2="estilo" size="xl" as="h1" />
 
       <section className="space-y-6">
         <h2 className="heading-display text-2xl">Logo</h2>
@@ -100,7 +96,7 @@ export default function StylePage() {
       <section className="space-y-6">
         <h2 className="heading-display text-2xl">Tarjetas de producto</h2>
         <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-4">
-          {sampleProducts.map((p, i) => (
+          {products.map((p, i) => (
             <Reveal key={p.slug} delay={i * 80}>
               <ProductCard product={p} />
             </Reveal>

@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
+import type { ProductStatus } from "@/lib/types";
 import { cn } from "@/lib/utils";
-
-export type ProductStatus = "disponible" | "agotado" | "proximamente";
 
 export const statusLabels: Record<ProductStatus, string> = {
   disponible: "Disponible",

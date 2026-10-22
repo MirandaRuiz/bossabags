@@ -3,7 +3,7 @@ import { Bodoni_Moda, Jost } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
-import { siteDefaults } from "@/lib/site";
+import { getSettings } from "@/lib/data/settings";
 import "./globals.css";
 
 const bodoni = Bodoni_Moda({
@@ -35,9 +35,8 @@ export const viewport: Viewport = {
   themeColor: "#f7efe6",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
-  // En la Fase 2 estos datos se leen de la tabla `settings`.
-  const site = siteDefaults;
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const site = await getSettings();
 
   return (
     <html lang="es-GT" className={`${bodoni.variable} ${jost.variable} antialiased`}>
