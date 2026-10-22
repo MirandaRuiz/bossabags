@@ -8,7 +8,7 @@ import { instagramUrl, whatsappUrl } from "@/lib/utils";
 
 export function Footer({ site }: { site: SiteInfo }) {
   return (
-    <footer className="bg-marble mt-24 border-t border-gold/30">
+    <footer className="bg-marble border-t border-gold/30">
       <div className="mx-auto max-w-6xl px-4 py-14 text-center sm:px-6">
         <Logo logoUrl={site.logoUrl} size="md" />
         <p className="mx-auto mt-5 max-w-sm text-sm text-ink-muted">

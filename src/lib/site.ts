@@ -4,7 +4,7 @@ import type { SiteSettings } from "@/lib/types";
 export const siteDefaults = {
   businessName: "BOSSA BAGS GT",
   logoUrl: null as string | null,
-  whatsappNumber: "50200000000",
+  whatsappNumber: "50234836338",
   instagramHandle: "bossabags.gt",
   shippingCost: 25,
   deliveryTimeText: "3 a 5 días hábiles",

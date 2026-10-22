@@ -27,3 +27,17 @@ export function whatsappUrl(phone: string, message?: string): string {
 export function instagramUrl(handle: string): string {
   return `https://instagram.com/${handle.replace(/^@/, "")}`;
 }
+
+export function siteUrl(path = ""): string {
+  const base = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
+  return `${base}${path}`;
+}
+
+/** Quita tildes y pasa a minúsculas, para búsquedas. */
+export function normalizeText(text: string): string {
+  return text
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .trim();
+}
